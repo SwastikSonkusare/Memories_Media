@@ -6,6 +6,8 @@ export default makeStyles({
     paddingTop: "56.25%",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     backgroundBlendMode: "darken",
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
   },
   border: {
     border: "solid",
