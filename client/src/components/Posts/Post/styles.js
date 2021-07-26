@@ -34,6 +34,7 @@ export default makeStyles({
     top: "2rem",
     right: "2rem",
     color: "white",
+    fontSize: "1.2rem",
   },
   grid: {
     display: "flex",
@@ -52,3 +53,4 @@ export default makeStyles({
     justifyContent: "space-between",
   },
 });
+

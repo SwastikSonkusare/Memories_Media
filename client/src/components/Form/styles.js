@@ -4,6 +4,7 @@ export default makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
+      // fontSize: "1.5rem",
     },
   },
   paper: {
@@ -13,6 +14,9 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+  },
+  textField: {
+    fontSize: "1.5rem",
   },
   fileInput: {
     width: "97%",
