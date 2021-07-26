@@ -40,3 +40,16 @@ export const updatePost = async (req, res) => {
 
   await updatedPost.save();
 };
+export const deletePost = async (req, res) => {
+  const post = await PostMessage.findById(req.params.id);
+
+  // console.log(post);
+
+  if (post) {
+    await post.remove();
+    res.json({ message: "Post removed Successfully" });
+  } else {
+    res.status(404);
+    throw new Error("Post not found");
+  }
+};
