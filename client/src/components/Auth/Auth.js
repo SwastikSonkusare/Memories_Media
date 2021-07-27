@@ -18,6 +18,7 @@ import Input from "./Input";
 import Icon from "./icon";
 
 import useStyles from "./styles";
+import { AUTH } from "../../constants/actionTypes";
 
 const initialState = {
   firstName: "",
@@ -58,10 +59,10 @@ const Auth = () => {
 
   const googleSuccess = async (res) => {
     const result = res?.profileObj;
-    const token = res?.tokenid;
+    const token = res?.tokenId;
 
     try {
-      dispatch({ type: "AUTH", data: { result, token } });
+      dispatch({ type: AUTH, data: { result, token } });
       history.push("/");
     } catch (error) {
       console.log(error);

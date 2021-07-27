@@ -11,6 +11,7 @@ import moment from "moment";
 import { useDispatch } from "react-redux";
 
 import ThumbAltIcon from "@material-ui/icons/ThumbUpAlt";
+import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 
@@ -22,6 +23,36 @@ const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
 
   const dispatch = useDispatch();
+
+  const user = JSON.parse(localStorage.getItem("profile"));
+
+  const Likes = () => {
+    if (post.likes.length > 0) {
+      return post.likes.find(
+        (like) => like === (user?.result?.googleId || user?.result?._id)
+      ) ? (
+        <>
+          <ThumbAltIcon fontSize="large" />
+          &nbsp;
+          {post.likes.length > 2
+            ? `You and ${post.likes.length - 1} others`
+            : `${post.likes.length} like${post.likes.length > 1 ? "s" : ""}`}
+        </>
+      ) : (
+        <>
+          <ThumbUpAltOutlined fontSize="large" />
+          &nbsp;{post.likes.length} {post.likes.length === 1 ? "Like" : "Likes"}
+        </>
+      );
+    }
+
+    return (
+      <>
+        <ThumbUpAltOutlined fontSize="large" />
+        &nbsp;Like
+      </>
+    );
+  };
 
   return (
     <Card className={classes.card}>
@@ -35,15 +66,18 @@ const Post = ({ post, setCurrentId }) => {
         <Typography variant="h5">{moment(post.createdAt).fromNow()}</Typography>
       </div>
 
-      <div className={classes.overlay2}>
-        <Button
-          style={{ color: "white" }}
-          size="medium"
-          onClick={() => setCurrentId(post._id)}
-        >
-          <MoreHorizIcon fontSize="large" />
-        </Button>
-      </div>
+      {(user?.result?.googleId === post?.creator ||
+        user?.result?._id === post?.creator) && (
+        <div className={classes.overlay2}>
+          <Button
+            style={{ color: "white" }}
+            size="medium"
+            onClick={() => setCurrentId(post._id)}
+          >
+            <MoreHorizIcon fontSize="large" />
+          </Button>
+        </div>
+      )}
 
       <div className={classes.details}>
         <Typography variant="h5" color="textSecondary">
@@ -64,20 +98,22 @@ const Post = ({ post, setCurrentId }) => {
         <Button
           size="large"
           color="primary"
+          disabled={!user?.result}
           onClick={() => dispatch(likePost(post._id))}
         >
-          <ThumbAltIcon fontSize="large" />
-          &nbsp; Like &nbsp;
-          {post.likeCount}
+          <Likes />
         </Button>
-        <Button
-          size="large"
-          color="primary"
-          onClick={() => dispatch(deletePost(post._id))}
-        >
-          <DeleteIcon fontSize="large" />
-          Delete
-        </Button>
+        {(user?.result?.googleId === post?.creator ||
+          user?.result?._id === post?.creator) && (
+          <Button
+            size="large"
+            color="primary"
+            onClick={() => dispatch(deletePost(post._id))}
+          >
+            <DeleteIcon fontSize="large" />
+            Delete
+          </Button>
+        )}
       </CardActions>
     </Card>
   );
