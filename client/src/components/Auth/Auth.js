@@ -23,7 +23,7 @@ const initialState = {
   firstName: "",
   lastName: "",
   password: "",
-  showPassword: "",
+  confirmPassword: "",
 };
 
 const Auth = () => {
@@ -114,8 +114,8 @@ const Auth = () => {
             {isSignUp && (
               <Input
                 name="confirmPassword"
-                label="Repeat Passord"
-                handle={handleChange}
+                label="Repeat Password"
+                handleChange={handleChange}
                 type="password"
               />
             )}
