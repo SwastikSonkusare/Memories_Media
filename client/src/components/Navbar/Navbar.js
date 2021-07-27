@@ -65,6 +65,7 @@ const Navbar = () => {
               classes={classes.logout}
               color="secondary"
               onClick={logout}
+              size="large"
             >
               Logout
             </Button>
