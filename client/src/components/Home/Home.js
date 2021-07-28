@@ -16,7 +16,7 @@ import Posts from "../Posts/Posts";
 import Form from "../Form/Form";
 import useStyles from "./styles";
 
-import { getPosts, getPostsBySearch } from "../../actions/posts";
+import { getPostsBySearch } from "../../actions/posts";
 import Paginate from "../Pagination/Pagination";
 
 function useQuery() {
@@ -36,13 +36,7 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [tags, setTags] = useState([]);
 
-  console.log(tags);
-
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, []);
 
   const searchPost = () => {
     if (search.trim() || tags) {
@@ -116,9 +110,11 @@ const Home = () => {
               </Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            <Paper elevation={6}>
-              <Paginate />
-            </Paper>
+            {!searchQuery && !tags.length && (
+              <Paper className={classes.pagination} elevation={6}>
+                <Paginate page={page} />
+              </Paper>
+            )}
           </Grid>
         </Grid>
       </Container>
