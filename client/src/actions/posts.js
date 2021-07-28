@@ -7,6 +7,7 @@ import {
   UPDATE,
   START_LOADING,
   STOP_LOADING,
+  FETCH_POST,
 } from "../constants/actionTypes";
 
 export const getPosts = (page) => async (dispatch) => {
@@ -16,6 +17,17 @@ export const getPosts = (page) => async (dispatch) => {
     dispatch({ type: STOP_LOADING });
 
     dispatch({ type: FETCH_ALL, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getPost = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_LOADING });
+    const { data } = await api.fetchPost(id);
+    dispatch({ type: STOP_LOADING });
+
+    dispatch({ type: FETCH_POST, payload: data });
   } catch (error) {
     console.log(error);
   }
