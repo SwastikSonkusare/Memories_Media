@@ -65,7 +65,7 @@ const Navbar = () => {
             </Typography>
             <Button
               variant="contained"
-              classes={classes.logout}
+              className={classes.logout}
               color="secondary"
               onClick={logout}
               size="large"
