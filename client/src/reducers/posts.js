@@ -1,4 +1,5 @@
 import {
+  COMMENT,
   CREATE,
   DELETE,
   FETCH_ALL,
@@ -13,7 +14,7 @@ export default (state = { isLoading: true, posts: [] }, action) => {
   switch (action.type) {
     case START_LOADING:
       return { ...state, isLoading: true };
-      
+
     case STOP_LOADING:
       return { ...state, isLoading: false };
 
@@ -39,6 +40,14 @@ export default (state = { isLoading: true, posts: [] }, action) => {
 
     case CREATE:
       return { ...state, posts: [...state.posts, action.payload] };
+
+    case COMMENT:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post._id === action.payload._id ? action.payload : post
+        ),
+      };
 
     case UPDATE:
       return {

@@ -12,6 +12,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { getPost, getPostsBySearch } from "../../actions/posts";
 
 import useStyles from "./styles";
+import CommentSection from "./CommentSection";
 
 const PostDetails = () => {
   const { posts, post, isLoading } = useSelector((state) => state.posts);
@@ -61,14 +62,12 @@ const PostDetails = () => {
               <Typography variant="body1">
                 {moment(post.createdAt).fromNow()}
               </Typography>
-              <Divider style={{ margin: "20px 0" }} />
-              <Typography variant="body1">
+              {/* <Divider style={{ margin: "20px 0" }} /> */}
+              {/* <Typography variant="body1">
                 <strong>Realtime Chat - coming soon!</strong>
-              </Typography>
+              </Typography> */}
               <Divider style={{ margin: "20px 0" }} />
-              <Typography variant="body1">
-                <strong>Comments - coming soon!</strong>
-              </Typography>
+              <CommentSection post={post} />
               <Divider style={{ margin: "20px 0" }} />
             </div>
             <div className={classes.imageSection}>
@@ -99,10 +98,10 @@ const PostDetails = () => {
                       <Typography gutterBottom variant="h4">
                         {title}
                       </Typography>
-                      <Typography gutterBottom variant="subtitle-2">
+                      <Typography gutterBottom variant="subtitle2">
                         {name}
                       </Typography>
-                      <Typography gutterBottom variant="subtitle-2">
+                      <Typography gutterBottom variant="subtitle2">
                         {message}
                       </Typography>
                       <Typography gutterBottom variant="">

@@ -8,13 +8,13 @@ import {
   START_LOADING,
   STOP_LOADING,
   FETCH_POST,
+  COMMENT,
 } from "../constants/actionTypes";
 
 export const getPosts = (page) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
     const { data } = await api.fetchPosts(page);
-    console.log(data);
 
     dispatch({ type: STOP_LOADING });
 
@@ -79,6 +79,19 @@ export const likePost = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const commentPost = (value, id) => async (dispatch) => {
+  try {
+    const { data } = await api.comment(value, id);
+
+    dispatch({ type: COMMENT, payload: data });
+
+    return data.comments;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const deletePost = (id) => async (dispatch) => {
   try {
     await api.deletePost(id);
