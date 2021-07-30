@@ -49,13 +49,9 @@ export default makeStyles((theme) => ({
       justifyContent: "center",
     },
   },
-  // logout: {
-  //   marginLeft: "20px",
-  // },
   userName: {
-    display: "flex",
-    alignItems: "center",
     textAlign: "center",
+    fontSize: "2rem",
   },
   brandContainer: {
     display: "flex",

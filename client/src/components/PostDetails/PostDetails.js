@@ -21,10 +21,11 @@ const PostDetails = () => {
   const classes = useStyles();
   const { id } = useParams();
 
+
   useEffect(() => {
     dispatch(getPost(id));
     getPostsBySearch({ search: "none", tags: post?.tags.join(",") });
-  }, [id]);
+  }, [id, dispatch]);
 
   if (!post) return null;
 

@@ -11,6 +11,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { GoogleLogin } from "react-google-login";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useToasts } from "react-toast-notifications";
 
 import { signUp, signIn } from "../../actions/auth";
 
@@ -30,6 +31,7 @@ const initialState = {
 const Auth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const { addToast } = useToasts();
 
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
@@ -64,8 +66,10 @@ const Auth = () => {
     try {
       dispatch({ type: AUTH, data: { result, token } });
       history.push("/");
+      addToast("Signed In Successfully", { appearance: "success" });
     } catch (error) {
       console.log(error);
+      addToast("Something went wrong", { appearance: "error" });
     }
   };
 

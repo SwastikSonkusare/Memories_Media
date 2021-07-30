@@ -3,6 +3,7 @@ import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
+import { useToasts } from "react-toast-notifications";
 
 import memoriesLogo from "../../images/memories.png";
 import memoriesText from "../../images/memoriesText.png";
@@ -15,6 +16,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
+  const { addToast } = useToasts();
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
@@ -35,6 +37,10 @@ const Navbar = () => {
   const logout = () => {
     dispatch({ type: LOGOUT });
     history.push("/");
+    addToast("Logged out Successfully", {
+      appearance: "success",
+      autoDismiss: true,
+    });
     setUser(null);
   };
 
@@ -60,7 +66,7 @@ const Navbar = () => {
             >
               {user.result.name.charAt(0)}
             </Avatar>
-            <Typography className={classes.userName} variant="h5">
+            <Typography className={classes.userName} variant="h4">
               {user.result.name}
             </Typography>
             <Button

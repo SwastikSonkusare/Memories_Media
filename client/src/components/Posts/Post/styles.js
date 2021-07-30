@@ -49,6 +49,10 @@ export default makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
+  readMore: {
+    color: "#333",
+    textDecoration: "none",
+  },
   cardAction: {
     display: "block",
     textAlign: "initial",

@@ -34,7 +34,11 @@ const Form = ({ currentId, setCurrentId }) => {
 
     if (currentId) {
       dispatch(
-        updatePost(currentId, { ...postData, name: user?.result?.name }, history)
+        updatePost(
+          currentId,
+          { ...postData, name: user?.result?.name },
+          history
+        )
       );
     } else {
       dispatch(createPost({ ...postData, name: user?.result?.name }, history));
