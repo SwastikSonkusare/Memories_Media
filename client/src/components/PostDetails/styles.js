@@ -8,11 +8,12 @@ export default makeStyles((theme) => ({
     maxHeight: "600px",
   },
   card: {
-    display: "flex",
-    width: "100%",
-    [theme.breakpoints.down("sm")]: {
-      flexWrap: "wrap",
-      flexDirection: "column",
+    display: "grid",
+    gridTemplateColumns: "2fr 1fr",
+    gridGap: "1rem",
+    [theme.breakpoints.down("md")]: {
+      gridTemplateColumns: "1fr",
+      textAlign: "center",
     },
   },
   section: {
@@ -21,15 +22,17 @@ export default makeStyles((theme) => ({
     flex: 1,
   },
   imageSection: {
-    marginLeft: "20px",
     [theme.breakpoints.down("sm")]: {
       marginLeft: 0,
     },
   },
   recommendedPosts: {
-    display: "flex",
-    [theme.breakpoints.down("sm")]: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    [theme.breakpoints.down("md")]: {
       flexDirection: "column",
+      gridTemplateColumns: "1fr",
+      textAlign: "center",
     },
   },
   loadingPaper: {
@@ -42,12 +45,22 @@ export default makeStyles((theme) => ({
   },
   commentsOuterContainer: {
     display: "flex",
+    gridGap: "1rem",
     justifyContent: "space-between",
+    [theme.breakpoints.down("md")]: {
+      textAlign: "center",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+    },
   },
   commentsInnerContainer: {
     height: "200px",
     overflowY: "auto",
     overflowX: "hidden",
-    marginRight: "30px",
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
   },
 }));

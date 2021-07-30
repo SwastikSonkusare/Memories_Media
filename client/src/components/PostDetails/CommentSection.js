@@ -27,11 +27,11 @@ const CommentSection = ({ post }) => {
     <>
       <div className={classes.commentsOuterContainer}>
         <div className={classes.commentsInnerContainer}>
-          <Typography gutterBottom variant="h4">
+          <Typography gutterBottom variant="h4" component="h4">
             Comments
           </Typography>
           {comments.map((c, i) => (
-            <Typography key={i} gutterBottom variant="subtitle1">
+            <Typography key={i} gutterBottom variant="h5" component="h5">
               <strong>{c.split(": ")[0]}</strong>
               {c.split(":")[1]}
             </Typography>

@@ -24,6 +24,13 @@ export default makeStyles((theme) => ({
     marginLeft: "10px",
     marginTop: "5px",
   },
+  logo: {
+    height: "4.5rem",
+    [theme.breakpoints.down("sm")]: {
+      width: "auto",
+      height: "3.7rem",
+    },
+  },
   toolbar: {
     display: "flex",
     justifyContent: "flex-end",
@@ -34,8 +41,7 @@ export default makeStyles((theme) => ({
   },
   profile: {
     display: "flex",
-    justifyContent: "space-between",
-    width: "400px",
+    gridGap: "1.5rem",
     alignItems: "center",
     [theme.breakpoints.down("sm")]: {
       width: "auto",
@@ -43,9 +49,9 @@ export default makeStyles((theme) => ({
       justifyContent: "center",
     },
   },
-  logout: {
-    marginLeft: "20px",
-  },
+  // logout: {
+  //   marginLeft: "20px",
+  // },
   userName: {
     display: "flex",
     alignItems: "center",

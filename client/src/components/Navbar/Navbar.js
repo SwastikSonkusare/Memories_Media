@@ -41,7 +41,7 @@ const Navbar = () => {
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
       <Link to="/" className={classes.brandContainer}>
-        <img src={memoriesText} alt="icon" height="45px" />
+        <img src={memoriesText} alt="icon" className={classes.logo} />
         <img
           className={classes.image}
           src={memoriesLogo}
@@ -60,7 +60,7 @@ const Navbar = () => {
             >
               {user.result.name.charAt(0)}
             </Avatar>
-            <Typography className={classes.userName} variant="h6">
+            <Typography className={classes.userName} variant="h5">
               {user.result.name}
             </Typography>
             <Button
