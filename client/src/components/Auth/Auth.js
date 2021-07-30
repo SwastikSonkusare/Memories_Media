@@ -66,10 +66,16 @@ const Auth = () => {
     try {
       dispatch({ type: AUTH, data: { result, token } });
       history.push("/");
-      addToast("Signed In Successfully", { appearance: "success" });
+      addToast("Signed In Successfully", {
+        appearance: "success",
+        autoDismiss: true,
+      });
     } catch (error) {
       console.log(error);
-      addToast("Something went wrong", { appearance: "error" });
+      addToast("Something went wrong", {
+        appearance: "error",
+        autoDismiss: true,
+      });
     }
   };
 

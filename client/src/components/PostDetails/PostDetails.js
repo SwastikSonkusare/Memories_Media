@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { useParams, useHistory } from "react-router-dom";
 
+import { useToasts } from "react-toast-notifications";
+
 import { getPost, getPostsBySearch } from "../../actions/posts";
 
 import useStyles from "./styles";
@@ -20,7 +22,8 @@ const PostDetails = () => {
   const history = useHistory();
   const classes = useStyles();
   const { id } = useParams();
-
+  const { isPostUpdated, isPostCreated } = useSelector((state) => state.posts);
+  const { addToast } = useToasts();
 
   useEffect(() => {
     dispatch(getPost(id));
@@ -28,6 +31,20 @@ const PostDetails = () => {
   }, [id, dispatch]);
 
   if (!post) return null;
+
+  if (isPostUpdated) {
+    addToast("Updated Successfully", {
+      appearance: "success",
+      autoDismiss: true,
+    });
+  }
+
+  if (isPostCreated) {
+    addToast("Created Successfully", {
+      appearance: "success",
+      autoDismiss: true,
+    });
+  }
 
   const openPost = (_id) => {
     history.push(`/posts/${_id}`);

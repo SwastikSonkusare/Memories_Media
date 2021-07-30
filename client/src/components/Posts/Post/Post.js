@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import ThumbAltIcon from "@material-ui/icons/ThumbUpAlt";
@@ -25,6 +25,7 @@ const Post = ({ post, setCurrentId }) => {
 
   const dispatch = useDispatch();
   const [likes, setLikes] = useState(post?.likes);
+
 
   const user = JSON.parse(localStorage.getItem("profile"));
 

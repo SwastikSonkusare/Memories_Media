@@ -17,8 +17,8 @@ const Navbar = () => {
   const history = useHistory();
   const location = useLocation();
   const { addToast } = useToasts();
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
 
   useEffect(() => {
     const token = user?.token;
@@ -30,7 +30,6 @@ const Navbar = () => {
         logout();
       }
     }
-
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location, user?.token]);
 
