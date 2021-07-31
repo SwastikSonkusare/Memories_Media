@@ -27,8 +27,8 @@ const PostDetails = () => {
 
   useEffect(() => {
     dispatch(getPost(id));
-    getPostsBySearch({ search: "none", tags: post?.tags.join(",") });
-  }, [id, dispatch]);
+    dispatch(getPostsBySearch({ tags: post?.tags.join(",") }));
+  }, [id, post?._id]);
 
   if (!post) return null;
 
@@ -50,7 +50,8 @@ const PostDetails = () => {
     history.push(`/posts/${_id}`);
   };
 
-  const recomendedPosts = posts.filter(({ _id }) => _id !== post._id);
+  const recomendedPosts =
+    posts.length && posts.filter(({ _id }) => _id !== post._id);
 
   return (
     <>
