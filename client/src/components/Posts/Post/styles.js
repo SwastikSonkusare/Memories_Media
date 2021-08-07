@@ -20,6 +20,7 @@ export default makeStyles({
     borderRadius: "15px",
     height: "100%",
     position: "relative",
+    overflow: "hidden",
   },
   overlay: {
     position: "absolute",
@@ -29,8 +30,8 @@ export default makeStyles({
   },
   overlay2: {
     position: "absolute",
-    top: "20px",
-    right: "20px",
+    top: "2px",
+    right: "-1rem",
     color: "white",
   },
   grid: {

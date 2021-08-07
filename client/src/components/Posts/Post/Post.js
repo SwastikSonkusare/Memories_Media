@@ -26,7 +26,6 @@ const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
   const [likes, setLikes] = useState(post?.likes);
 
-
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const userId = user?.result?.googleId || user?.result?._id;
